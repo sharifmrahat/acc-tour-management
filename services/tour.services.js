@@ -28,3 +28,10 @@ exports.getToursService = async (query) => {
 exports.createToursService = async (data) => {
   return await Tour.create(data);
 };
+
+exports.getToursByIdService = async (_id) => {
+  await Tour.updateOne({ _id}, { $inc: { viewed: 1 } });
+  const tour = await Tour.findById(_id);
+
+  return tour;
+};
