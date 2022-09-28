@@ -1,4 +1,15 @@
-const { createToursService } = require("../services/tour.services");
+const { createToursService, getToursService } = require("../services/tour.services");
+
+
+module.exports.getTours = async (req, res, next) => {
+  try {
+    const tours = await getToursService(req.query);
+    res.status(200).send(tours);
+  } catch (error) {
+    res.status(400).json({ success: false, error: error.message });
+    next(error);
+  }
+};
 
 module.exports.createTours = async (req, res, next) => {
     try {

@@ -4,6 +4,7 @@ const tourController = require('../controllers/tour.controller')
 
 router
     .route('/')
+    .get(tourController.getTours)
     .post(tourController.createTours)
 
 
