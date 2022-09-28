@@ -8,7 +8,7 @@
 ![Expressjs](https://img.shields.io/badge/Express-4e4e4e?style=for-the-badge&logo=express&logoColor=white)
 ![MongoDB](https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white)
 
-### Use this template | MVC pattern
+### Use this template | MVC pattern:
 
 #### Step-1 - Clone repository:
 
