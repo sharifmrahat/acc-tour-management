@@ -1,4 +1,4 @@
-const { createToursService, getToursService, getToursByIdService, updateTourByIdService, getTrendingTourService } = require("../services/tour.services");
+const { createToursService, getToursService, getToursByIdService, updateTourByIdService, getTopToursService } = require("../services/tour.services");
 
 
 module.exports.getTours = async (req, res, next) => {
@@ -47,27 +47,22 @@ exports.updateTourById = async (req, res, next) => {
 
   exports.getTrendingTour = async (req, res, next) => {
     try {
-      const tours = await getTrendingTourService();
+      const queries = {sort: "-viewed", limit: 3}
+      const tours = await getTopToursService(queries);
       res.status(200).send(tours);
     } catch (error) {
       res.status(400).json({ success: false, error: error.message });
       next(error);
     }
-    // try{
-    //   const queries = {
-    //     sort: "-viewed",
-    //     limit: 3,
-    //   } 
-    // const result = await getToursService(queries);
-    //   res.status(200).json({
-    //     status: "Top Three Viewed Tour",
-    //     data: result,
-    //   });
-    // } catch (error) {
-    //   res.status(400).json({
-    //     status: "fail",
-    //     message: "can't get the data",
-    //     error: error.message,
-    //   });
-    // }
+  }
+
+  exports.getCheapestTour = async (req, res, next) => {
+    try {
+      const queries = {sort: "price", limit: 3}
+      const tours = await getTopToursService(queries);
+      res.status(200).send(tours);
+    } catch (error) {
+      res.status(400).json({ success: false, error: error.message });
+      next(error);
+    }
   }

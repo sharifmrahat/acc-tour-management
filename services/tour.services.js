@@ -45,8 +45,9 @@ exports.updateTourByIdService = async(_id, data) =>{
 }
 
 
-exports.getTrendingTourService = async () => {
+exports.getTopToursService = async (query) => {
+  const {sort, limit} = query
   return await Tour.find()
-    .sort("-viewed")
-    .limit(3);
+    .sort(sort)
+    .limit(+limit);
 }

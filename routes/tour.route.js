@@ -12,5 +12,8 @@ router
     .route('/trending')
     .get(tourController.getTrendingTour)
 
-
+router
+    .route('/cheapest')
+    .get(tourController.getCheapestTour)
+    
 module.exports=router
