@@ -43,3 +43,10 @@ exports.updateTourByIdService = async(_id, data) =>{
     {runValidators: true});
   return tour;
 }
+
+
+exports.getTrendingTourService = async () => {
+  return await Tour.find()
+    .sort("-viewed")
+    .limit(3);
+}
