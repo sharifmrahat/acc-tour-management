@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 
+//Tour Schema
 const tourSchema = mongoose.Schema(
   {
     name: {
