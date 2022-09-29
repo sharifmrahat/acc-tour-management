@@ -1,4 +1,4 @@
-const { createToursService, getToursService, getToursByIdService } = require("../services/tour.services");
+const { createToursService, getToursService, getToursByIdService, updateTourByIdService } = require("../services/tour.services");
 
 
 module.exports.getTours = async (req, res, next) => {
@@ -27,6 +27,17 @@ exports.getTourById = async (req, res, next) => {
     const { id } = req.params;
     const tour = await getToursByIdService(id);
     res.status(200).json({ success: true, data: tour });
+  } catch (error) {
+    res.status(400).json({ success: false, error: error.message });
+    next(error);
+  }
+  }
+
+exports.updateTourById = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const product = await updateTourByIdService(id, req.body);
+    res.status(200).json({ success: true, data: product });
   } catch (error) {
     res.status(400).json({ success: false, error: error.message });
     next(error);

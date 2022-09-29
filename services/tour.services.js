@@ -35,3 +35,11 @@ exports.getToursByIdService = async (_id) => {
 
   return tour;
 };
+
+exports.updateTourByIdService = async(_id, data) =>{
+  const tour = await Tour.updateOne(
+    {_id},
+    {...data},
+    {runValidators: true});
+  return tour;
+}
